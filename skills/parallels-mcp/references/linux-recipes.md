@@ -2,6 +2,8 @@
 
 ## 1. Execution fundamentals
 
+- **Check VM power state first:** run `prlctl list -a` (or `parallels_search_vms`) before `prlctl exec` (`PRL_ERR_IO_STOPPED` means the VM is suspended).
+- **Avoid full `apt-get upgrade` mid-GUI-session unless needed:** upgrading `systemd`, `dbus`, or `gnome-terminal` mid-session breaks `gnome-terminal` window spawning until reboot (`prlctl restart "$VM"`, then wait for auto-login; or fall back to `xfce4-terminal`).
 - **Root vs desktop session:** `prlctl exec "$VM" ...` (or MCP `elevated=true`) runs as **root**. `prlctl exec "$VM" --current-user ...` (or default MCP `parallels_vm_exec`) runs as the active GUI user.
 - **Always use `bash << 'EOF'` for multi-command probes:** Never run `prlctl exec "$VM" bash -c "cmd1; cmd2"`; Parallels argv splitting can cut at `;` and run truncated commands (for instance running bare `id` as `root` instead of `id <user>`).
 - **Guard probes with Perl alarm on macOS:** macOS has no native `timeout(1)`. Wrap potentially hanging probes with `perl -e 'alarm 10; exec @ARGV' prlctl exec ...` and avoid firing overlapping `prlctl exec` calls at the same VM (`PrlJob_GetRetCode: Invalid argument`).
