@@ -1,0 +1,12 @@
+{
+  "name": "parallels-mcp",
+  "displayName": "Parallels Desktop & MCP",
+  "description": "Control, script, snapshot, inspect (Apple Vision OCR), and cleanly capture Parallels Desktop virtual machines on macOS with bundled pdfm-mcp and prlctl workflows.",
+  "version": "1.0.0",
+  "repository": "https://github.com/Unnidentified/parallels-mcp",
+  "suggestedPrompts": [
+    "List my Parallels VMs and check their IP addresses and snapshots",
+    "Run a setup script cleanly inside my Ubuntu and Windows 11 Parallels VMs",
+    "Take a tight, cropped terminal screenshot or automate a GUI flow via OCR"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "pdfm-mcp": {
+      "command": "/bin/sh",
+      "args": [
+        "-c",
+        "for p in /opt/homebrew/bin/pdfm-mcp /usr/local/bin/pdfm-mcp ~/.local/bin/pdfm-mcp \"$(command -v pdfm-mcp 2>/dev/null)\"; do if [ -x \"$p\" ]; then exec \"$p\" \"$@\"; fi; done; echo 'pdfm-mcp binary not found. Install via: brew install --cask parallels/tap/pdfm-mcp' >&2; exit 127",
+        "--"
+      ]
+    }
+  }
+}
